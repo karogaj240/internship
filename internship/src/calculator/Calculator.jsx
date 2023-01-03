@@ -1,6 +1,8 @@
 import React from 'react';
 
 
+
+
 class Calculator extends React.Component {
     constructor(props) {
         super(props);
@@ -25,7 +27,7 @@ class Calculator extends React.Component {
             <input value={this.state.sign} onChange={this.changeSign}/>
             <input type="number" value={this.state.secondNumber} onChange={this.changeSecondNumber}/>
             <button type="button" onClick={this.calculate}>=</button>
-            <input type="text" value={this.state.result} disabled="disabled"></input>
+            <input type="text" value={this.state.result} disabled="disabled"/>
         </form>
         );
     };
@@ -45,11 +47,11 @@ class Calculator extends React.Component {
     calculate(e) {
         e.preventDefault();
 
-        const result = this.state.firstNumber - this.state.secondNumber
+        const result = Number.parseFloat(this.state.firstNumber) - Number.parseFloat(this.state.secondNumber);
+        const printResult = result.toPrecision(10);
 
-        this.setState({result: '' + result});
+        this.setState({result: '' + printResult});
     }
-
 
 }
 
